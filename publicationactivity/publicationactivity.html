@@ -54,6 +54,13 @@
   }
   body:hover .cursor { opacity: 1; }
 
+  /* Отключение кастомного курсора на мобильных (устройства с touch) */
+  @media (pointer: coarse) {
+    body { cursor: auto !important; }
+    .cursor, .cursor-follower { display: none !important; }
+    a, button, input { cursor: pointer !important; }
+  }
+
   /* NAV */
   nav {
     position: fixed;
@@ -101,7 +108,7 @@
   }
   .nav-links a:hover { color: var(--accent); }
 
-  /* HERO (Обновленный фон) */
+  /* HERO */
   .hero {
     position: relative;
     min-height: 80vh;
@@ -109,11 +116,10 @@
     align-items: center;
     padding: 120px 48px 80px;
     overflow: hidden;
-    /* Цветовая неоднотонная подложка (линейный градиент) */
     background: linear-gradient(135deg, #eef3fc 0%, #f8f9fa 50%, #fcf0f0 100%);
   }
   
-  /* Анимированные цветовые пятна для отличия от главной страницы */
+  /* Анимированные цветовые пятна */
   .hero::before {
     content: '';
     position: absolute;
@@ -159,7 +165,7 @@
     animation: fadeUp 0.8s ease 0.3s forwards;
   }
   .hero-title {
-    font-size: clamp(36px, 6vw, 90px);
+    font-size: clamp(32px, 5vw, 90px);
     font-weight: 900;
     line-height: 1.1;
     text-transform: uppercase;
@@ -168,10 +174,8 @@
   }
   .hero-title .line { display: block; opacity: 0; transform: translateY(100%); }
   .hero-title .line:nth-child(1) { animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
-  .hero-title .line:nth-child(2) { 
-    animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.65s forwards; 
-    color: var(--accent); 
-  }
+  .hero-title .line:nth-child(2) { animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.65s forwards; color: var(--accent); }
+  .hero-title .line:nth-child(3) { animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.8s forwards; color: var(--accent); }
 
   .hero-sub {
     display: flex;
@@ -243,9 +247,6 @@
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 60px;
-  }
-  @media(max-width: 1024px) {
-    .memo-wrapper { grid-template-columns: 1fr; }
   }
 
   .memo-header .info-title { font-size: clamp(28px, 4vw, 42px); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 24px; }
@@ -319,6 +320,57 @@
   .footer-logo { font-size: 24px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--text); }
   .footer-logo span { color: var(--accent); }
   .footer-copy { font-size: 11px; color: var(--mid); text-transform: uppercase; font-weight: 700; }
+
+  /* =========================================
+     МОБИЛЬНАЯ АДАПТАЦИЯ (Медиа-запросы)
+     ========================================= */
+  @media (max-width: 1024px) {
+    .memo-wrapper { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    section, .hero { padding-left: 20px; padding-right: 20px; }
+    .hero { padding-top: 140px; padding-bottom: 60px; min-height: auto; }
+    
+    nav { 
+      padding: 16px 20px; 
+      flex-direction: column; 
+      align-items: flex-start; 
+      gap: 16px; 
+    }
+    .nav-links { 
+      width: 100%; 
+      justify-content: flex-start; 
+      gap: 16px; 
+      flex-wrap: wrap; 
+    }
+
+    .hero-eyebrow { font-size: 10px; margin-bottom: 16px; }
+    .hero-title { font-size: clamp(28px, 8vw, 50px); }
+    .hero-sub { margin-top: 32px; gap: 24px; }
+    .hero-desc { font-size: 13px; }
+    .hero-cta { padding: 14px 24px; font-size: 11px; width: 100%; justify-content: center; }
+
+    .section-label { font-size: 10px; margin-bottom: 30px; }
+    section { padding-top: 60px; padding-bottom: 60px; }
+    
+    .memo-header .info-title { font-size: clamp(24px, 6vw, 32px); margin-bottom: 16px; }
+    .info-card { padding: 24px; }
+    
+    .step-row { grid-template-columns: 40px 1fr; gap: 16px; padding: 16px 0; }
+    .step-num { font-size: 20px; }
+    .step-name { font-size: 14px; }
+
+    .formula-box { padding: 20px; margin: 24px 0; }
+    .formula-text { font-size: 14px; }
+
+    footer { 
+      padding: 32px 20px; 
+      flex-direction: column; 
+      text-align: center; 
+      gap: 16px; 
+    }
+  }
 </style>
 </head>
 <body>
@@ -341,7 +393,8 @@
     <p class="hero-eyebrow">Научное управление — Регламенты и процедуры</p>
     <h1 class="hero-title">
       <span class="line">ПОДДЕРЖКА</span>
-      <span class="line">ПУБЛИКАЦИОННОЙ АКТИВНОСТИ</span>
+      <span class="line">ПУБЛИКАЦИОННОЙ</span>
+      <span class="line">АКТИВНОСТИ</span>
     </h1>
     <div class="hero-sub">
       <p class="hero-desc">
@@ -542,25 +595,46 @@
 </footer>
 
 <script>
-  // Cursor
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('follower');
-  let fx = 0, fy = 0, cx = 0, cy = 0;
+  
+  // Проверка на сенсорное устройство (чтобы JS не тратил ресурсы на мобильных)
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-  document.addEventListener('mousemove', e => {
-    cx = e.clientX; cy = e.clientY;
-    cursor.style.left = cx + 'px';
-    cursor.style.top = cy + 'px';
-  });
+  if (!isTouchDevice) {
+    let fx = 0, fy = 0, cx = 0, cy = 0;
 
-  function animFollower() {
-    fx += (cx - fx) * 0.1;
-    fy += (cy - fy) * 0.1;
-    follower.style.left = fx + 'px';
-    follower.style.top = fy + 'px';
-    requestAnimationFrame(animFollower);
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX; cy = e.clientY;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+    });
+
+    function animFollower() {
+      fx += (cx - fx) * 0.1;
+      fy += (cy - fy) * 0.1;
+      follower.style.left = fx + 'px';
+      follower.style.top = fy + 'px';
+      requestAnimationFrame(animFollower);
+    }
+    animFollower();
+
+    // Hover expand cursor
+    document.querySelectorAll('a, button, input').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        follower.style.width = '60px';
+        follower.style.height = '60px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '10px';
+        cursor.style.height = '10px';
+        follower.style.width = '36px';
+        follower.style.height = '36px';
+      });
+    });
   }
-  animFollower();
 
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {
