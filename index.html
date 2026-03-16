@@ -7,15 +7,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;400;700;900&family=Neue+Montreal:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
+    /* Светлая тема (по умолчанию) */
     --bg: #f8f9fa;
     --text: #121212;
-    --accent: #0056D2; /* Корпоративный синий */
+    --accent: #0056D2;
     --accent-hover: #003c96;
     --red: #D32F2F;
     --gray: #e5e7eb;
     --gray-dark: #d1d5db;
     --mid: #6b7280;
     --card-bg: #ffffff;
+    --nav-bg: rgba(248, 249, 250, 0.9);
+    --hero-glow-1: rgba(0, 86, 210, 0.05);
+    --hero-glow-2: rgba(211, 47, 47, 0.05);
+    --line-color: rgba(0,0,0,0.03);
+    --cursor-border: rgba(0, 86, 210, 0.5);
+  }
+
+  /* Темная тема */
+  body.dark-theme {
+    --bg: #121212;
+    --text: #f8f9fa;
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    --red: #ef4444;
+    --gray: #2a2a2a;
+    --gray-dark: #404040;
+    --mid: #a3a3a3;
+    --card-bg: #1e1e1e;
+    --nav-bg: rgba(18, 18, 18, 0.9);
+    --hero-glow-1: rgba(59, 130, 246, 0.15);
+    --hero-glow-2: rgba(239, 68, 68, 0.15);
+    --line-color: rgba(255,255,255,0.03);
+    --cursor-border: rgba(59, 130, 246, 0.5);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,6 +52,7 @@
     font-family: 'Unbounded', sans-serif;
     overflow-x: hidden;
     cursor: none;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   /* CUSTOM CURSOR */
@@ -43,11 +68,13 @@
     transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s;
     mix-blend-mode: multiply;
   }
+  body.dark-theme .cursor { mix-blend-mode: screen; }
+  
   .cursor-follower {
     position: fixed;
     width: 36px;
     height: 36px;
-    border: 1px solid rgba(0, 86, 210, 0.5);
+    border: 1px solid var(--cursor-border);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
@@ -76,9 +103,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(248, 249, 250, 0.9);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--gray);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
   }
 
   .nav-logo {
@@ -94,6 +122,7 @@
   .nav-links {
     display: flex;
     gap: 40px;
+    align-items: center;
     list-style: none;
   }
   .nav-links a {
@@ -106,6 +135,18 @@
     transition: color 0.3s;
   }
   .nav-links a:hover { color: var(--accent); }
+  
+  .theme-btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: none; /* Кастомный курсор позаботится об этом */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+  }
+  .theme-btn:hover { color: var(--accent); }
 
   /* HERO */
   .hero {
@@ -122,9 +163,10 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0, 86, 210, 0.05) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(211, 47, 47, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 60% at 70% 40%, var(--hero-glow-1) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, var(--hero-glow-2) 0%, transparent 50%),
       var(--bg);
+    transition: background 0.4s ease;
   }
 
   .hero-lines {
@@ -135,9 +177,10 @@
         90deg,
         transparent,
         transparent calc(100vw / 12 - 1px),
-        rgba(0,0,0,0.03) calc(100vw / 12 - 1px),
-        rgba(0,0,0,0.03) calc(100vw / 12)
+        var(--line-color) calc(100vw / 12 - 1px),
+        var(--line-color) calc(100vw / 12)
       );
+    transition: background-image 0.4s ease;
   }
 
   .hero-content { position: relative; z-index: 2; width: 100%; }
@@ -214,7 +257,7 @@
     transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
   }
   .hero-cta:hover::before { transform: scaleX(1); }
-  .hero-cta:hover { color: #fff; border-color: var(--accent); }
+  .hero-cta:hover { color: var(--bg); border-color: var(--accent); }
   .hero-cta span { position: relative; z-index: 1; }
   .hero-cta .arrow { position: relative; z-index: 1; font-size: 18px; transition: transform 0.3s; }
   .hero-cta:hover .arrow { transform: translateX(6px); }
@@ -227,6 +270,7 @@
     padding: 20px 0;
     white-space: nowrap;
     background: var(--card-bg);
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
   .marquee-track {
     display: inline-flex;
@@ -253,7 +297,7 @@
   }
 
   /* SECTION SHARED */
-  section { padding: 120px 48px; border-bottom: 1px solid var(--gray); }
+  section { padding: 120px 48px; border-bottom: 1px solid var(--gray); transition: border-color 0.4s ease; }
 
   .section-label {
     font-size: 10px;
@@ -288,10 +332,9 @@
     color: var(--text);
     position: relative;
     overflow: hidden;
-    transition: color 0.3s;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease, color 0.3s;
+    transition: opacity 0.6s ease, transform 0.6s ease, color 0.3s, border-color 0.4s ease;
   }
   .event-row.visible { opacity: 1; transform: translateY(0); }
   .event-row::before {
@@ -301,7 +344,7 @@
     bottom: 0;
     height: 0;
     background: var(--gray);
-    transition: height 0.4s cubic-bezier(0.16,1,0.3,1);
+    transition: height 0.4s cubic-bezier(0.16,1,0.3,1), background-color 0.4s ease;
     z-index: -1;
   }
   .event-row:hover::before { height: 100%; }
@@ -316,15 +359,17 @@
     display: block;
     font-size: 32px;
     font-weight: 700;
-    color: var(--text);
+    color: var(--accent); /* Изменено на корпоративный синий цвет */
     line-height: 1;
     letter-spacing: -0.02em;
+    transition: color 0.4s ease;
   }
   .event-name {
-    font-size: clamp(16px, 2vw, 24px);
+    font-size: clamp(14px, 2vw, 24px);
     font-weight: 700;
     letter-spacing: 0em;
     text-transform: uppercase;
+    line-height: 1.3;
   }
   .event-venue {
     font-size: 11px;
@@ -342,6 +387,7 @@
     border: 1px solid;
     font-weight: 700;
     background: var(--card-bg);
+    transition: background-color 0.4s ease;
   }
   .event-badge.avail { border-color: var(--accent); color: var(--accent); }
 
@@ -366,9 +412,14 @@
   }
   .about-title em { color: var(--accent); font-style: normal; }
 
+  .main-contact {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
   }
   .info-card {
@@ -376,12 +427,12 @@
     border: 1px solid var(--gray-dark);
     padding: 32px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.4s ease, border-color 0.4s ease;
   }
   .info-card:hover { transform: translateY(-5px); border-color: var(--accent); }
   .info-card h3 { font-size: 14px; font-weight: 900; text-transform: uppercase; margin-bottom: 16px; color: var(--accent); letter-spacing: 0.05em; line-height: 1.4;}
   .info-card p { font-size: 13px; font-weight: 400; line-height: 1.8; color: var(--mid); }
-  .info-card strong { color: var(--text); font-weight: 700; font-size: 15px; display: block; margin-bottom: 4px; }
+  .info-card strong { color: var(--text); font-weight: 700; font-size: 15px; display: block; margin-bottom: 4px; transition: color 0.4s ease;}
 
   /* FOOTER */
   footer {
@@ -392,6 +443,7 @@
     background: var(--card-bg);
     flex-wrap: wrap;
     gap: 40px;
+    transition: background-color 0.4s ease;
   }
   .footer-logo {
     font-size: 28px;
@@ -442,7 +494,7 @@
   .social-link:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(0, 86, 210, 0.05);
+    background: var(--hero-glow-1);
   }
 
   /* ANIMATIONS */
@@ -489,6 +541,13 @@
     <li><a href="#resources">Ресурсы</a></li>
     <li><a href="#contacts">Контакты</a></li>
     <li><a href="#">EN</a></li>
+    <li>
+      <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">
+        <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </li>
   </ul>
 </nav>
 
@@ -586,6 +645,16 @@
       <div class="event-badge avail">Заявка</div>
     </a>
 
+    <a class="event-row" href="https://scienceadmin.rudn.ru" target="_blank">
+      <div class="event-date"><strong>05</strong></div>
+      <div>
+        <div class="event-name">СИСТЕМА УЧЕТА ПУБЛИКАЦИОННОЙ АКТИВНОСТИ SCIENCEADMIN</div>
+        <div class="event-venue">Информационная система · База данных</div>
+      </div>
+      <div></div>
+      <div class="event-badge avail">ScienceAdmin</div>
+    </a>
+
   </div>
 </section>
 
@@ -597,9 +666,9 @@
         НАШИ<br><em>ЦЕНТРЫ</em>
       </h2>
     </div>
-    <div class="card-grid reveal">
-      
-      <div class="info-card">
+    
+    <div class="reveal">
+      <div class="info-card main-contact">
         <h3>Научное управление</h3>
         <p><strong>Докукин Петр Александрович</strong>
         начальник управления, к.т.н.<br>
@@ -608,31 +677,32 @@
         science@rudn.ru</p>
       </div>
 
-      <div class="info-card">
-        <h3>Аналитический центр</h3>
-        <p><strong>Карагод Юлия Геннадьевна</strong>
-        руководитель центра, к.ф.н.<br>
-        +7 (495) 433-14-01 доб. 4311<br>
-        karagod-yug@rudn.ru</p>
+      <div class="card-grid">
+        <div class="info-card">
+          <h3>Аналитический центр</h3>
+          <p><strong>Карагод Юлия Геннадьевна</strong><br>
+          руководитель центра, к.ф.н.<br>
+          +7 (495) 433-14-01 доб. 4311<br>
+          karagod-yug@rudn.ru</p>
+        </div>
+        
+        <div class="info-card">
+          <h3>Дирекция управления научными проектами</h3>
+          <p><br>
+          ул. Миклухо-Маклая, 10/2<br>
+          +7 (495) 787-38-03<br>
+          science@rudn.ru</p>
+        </div>
+        
+        <div class="info-card">
+          <h3>Центр управления научной репутацией</h3>
+          <p><strong>Бузыкина Екатерина Александровна</strong><br>
+          руководитель центра<br>
+          +7 (495) 787-38-03<br>
+          buzykina-ea@rudn.ru<br>
+          scientometrics@rudn.ru</p>
+        </div>
       </div>
-      
-      <div class="info-card">
-        <h3>Дирекция управления научными проектами</h3>
-        <p><br>
-        ул. Миклухо-Маклая, 10/2<br>
-        +7 (495) 787-38-03<br>
-        science@rudn.ru</p>
-      </div>
-      
-      <div class="info-card">
-        <h3>Центр управления научной репутацией</h3>
-        <p><strong>Бузыкина Екатерина Александровна</strong>
-        руководитель центра<br>
-        +7 (495) 787-38-03<br>
-        buzykina-ea@rudn.ru<br>
-        scientometrics@rudn.ru</p>
-      </div>
-
     </div>
   </div>
 </section>
@@ -664,6 +734,21 @@
 </footer>
 
 <script>
+  // Темная тема
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    
+    // Смена иконки: Солнце / Луна
+    if(document.body.classList.contains('dark-theme')) {
+      themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    } else {
+      themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    }
+  });
+
   // Cursor
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('follower');
