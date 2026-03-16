@@ -205,7 +205,7 @@
   }
 
   .hero-title {
-    font-size: clamp(28px, 10vw, 160px); /* Изменено для адаптива */
+    font-size: clamp(28px, 10vw, 160px); 
     font-weight: 900;
     line-height: 0.88;
     text-transform: uppercase;
@@ -435,43 +435,6 @@
   .info-card p { font-size: 13px; font-weight: 400; line-height: 1.8; color: var(--mid); }
   .info-card strong { color: var(--text); font-weight: 700; font-size: 15px; display: block; margin-bottom: 4px; transition: color 0.4s ease;}
 
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--gray);
-    border: 1px solid var(--gray);
-    margin-top: 60px;
-  }
-  .stat-cell {
-    background: var(--card-bg);
-    padding: 32px;
-  }
-  .stat-num {
-    font-size: 52px;
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    color: var(--text);
-    line-height: 1;
-  }
-  .stat-num span { color: var(--accent); }
-  .stat-label {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--mid);
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-top: 8px;
-  }
-  .about-text {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.9;
-    color: var(--mid);
-    letter-spacing: 0.04em;
-  }
-  .about-text p + p { margin-top: 24px; }
-
   /* FOOTER */
   footer {
     padding: 48px 48px 40px;
@@ -580,7 +543,10 @@
 
     /* Главный экран */
     .hero { padding: 0 20px 40px; min-height: auto; height: 100vh; justify-content: flex-end;}
-    .hero-title { font-size: clamp(32px, 11vw, 160px); }
+    
+    /* Жесткая привязка шрифта к ширине экрана, чтобы УПРАВЛЕНИЕ влезало всегда */
+    .hero-title { font-size: 9vw; letter-spacing: -0.02em;}
+    
     .hero-sub { flex-direction: column; align-items: flex-start; gap: 20px; margin-top: 32px; }
     .hero-desc { font-size: 12px; line-height: 1.6; max-width: 100%; }
     .hero-cta { width: 100%; justify-content: space-between; padding: 16px 24px;}
@@ -611,8 +577,6 @@
     .about-title { font-size: clamp(36px, 10vw, 96px); }
     .card-grid { grid-template-columns: 1fr; }
     .info-card { padding: 24px; }
-    .stat-cell { padding: 20px 16px; }
-    .stat-num { font-size: 40px; }
 
     /* Подвал */
     footer { padding: 40px 20px; flex-direction: column; align-items: flex-start; gap: 32px; }
@@ -746,42 +710,6 @@
       <div class="event-badge avail">ScienceAdmin</div>
     </a>
 
-  </div>
-</section>
-
-<section id="about">
-  <div class="section-label">О подразделении</div>
-  <div class="about-wrap">
-    <div>
-      <h2 class="about-title reveal">
-        НАУКА<br>БЕЗ <em>ГРАНИЦ</em>
-      </h2>
-    </div>
-    <div>
-      <div class="about-text reveal">
-        <p>Научное управление РУДН — это ключевой административный и координационный центр, обеспечивающий стратегическое развитие исследовательской деятельности университета.</p>
-        <p>Мы оказываем комплексную поддержку ученым: от поиска грантового финансирования и защиты интеллектуальной собственности до подготовки публикаций в ведущие мировые издания.</p>
-        <p>Наша цель — создание передовой инновационной экосистемы, в которой рождаются технологии будущего и формируются новые научные школы.</p>
-      </div>
-      <div class="about-stats reveal">
-        <div class="stat-cell">
-          <div class="stat-num">5k<span>+</span></div>
-          <div class="stat-label">Публикаций в год</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">150<span>+</span></div>
-          <div class="stat-label">Научных центров</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">200<span>+</span></div>
-          <div class="stat-label">Грантовых проектов</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">10<span>k</span></div>
-          <div class="stat-label">Исследователей</div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 

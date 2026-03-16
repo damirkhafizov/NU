@@ -346,7 +346,15 @@
     }
 
     .hero-eyebrow { font-size: 10px; margin-bottom: 16px; }
-    .hero-title { font-size: clamp(28px, 8vw, 50px); }
+    
+    /* Агрессивное масштабирование заголовка на мобильных */
+    .hero-title { 
+      font-size: clamp(18px, 6.5vw, 42px); 
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      word-break: break-word; /* Подстраховка для очень узких экранов */
+    }
+    
     .hero-sub { margin-top: 32px; gap: 24px; }
     .hero-desc { font-size: 13px; }
     .hero-cta { padding: 14px 24px; font-size: 11px; width: 100%; justify-content: center; }
@@ -414,8 +422,8 @@
   <div class="memo-wrapper reveal">
     <div class="memo-header">
       <h2 class="info-title">Требования к <span>статьям</span></h2>
-      <p>Премиальные выплаты производятся авторам-работникам РУДН за публикации в журналах, индексируемых в базах WoS CC, Scopus и RSCI <span style="display:none"></span>.</p>
-      <p>Обязательным условием является наличие в статье <a href="https://www.rudn.ru/science/library/novye-pravila-ukazaniya-affiliacii" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">аффилиации с РУДН</a> <span style="display:none"></span>, а также написание статьи на иностранном языке (за исключением журналов категории «I») <span style="display:none"></span>.</p>
+      <p>Премиальные выплаты производятся авторам-работникам РУДН за публикации в журналах, индексируемых в базах WoS CC, Scopus и RSCI <span style="display:none">[cite: 58]</span>.</p>
+      <p>Обязательным условием является наличие в статье <a href="https://www.rudn.ru/science/library/novye-pravila-ukazaniya-affiliacii" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">аффилиации с РУДН</a> <span style="display:none">[cite: 59]</span>, а также написание статьи на иностранном языке (за исключением журналов категории «I») <span style="display:none">[cite: 79]</span>.</p>
       
       <div class="process-steps">
         <h3 class="step-name" style="margin-bottom: 20px;">Порядок получения выплаты:</h3>
@@ -423,21 +431,21 @@
           <div class="step-num">1</div>
           <div>
             <div class="step-name">Экспертное заключение</div>
-            <div class="step-desc">Обязательное получение экспертного заключения о возможности открытого опубликования материалов до выхода статьи <span style="display:none"></span>.</div>
+            <div class="step-desc">Обязательное получение экспертного заключения о возможности открытого опубликования материалов до выхода статьи <span style="display:none">[cite: 14]</span>.</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-num">2</div>
           <div>
             <div class="step-name">Индексация и Science Admin</div>
-            <div class="step-desc">Добавление публикации в базу Science Admin происходит автоматически после ее индексации в Scopus / WoS CC / RSCI <span style="display:none"></span>. Статья должна иметь статус «Верифицирована / Подтверждена» <span style="display:none"></span>. Если применяются особые условия (например, гранты), автор указывает это при верификации <span style="display:none"></span>.</div>
+            <div class="step-desc">Добавление публикации в базу Science Admin происходит автоматически после ее индексации в Scopus / WoS CC / RSCI <span style="display:none">[cite: 17]</span>. Статья должна иметь статус «Верифицирована / Подтверждена» <span style="display:none">[cite: 16]</span>. Если применяются особые условия (например, гранты), автор указывает это при верификации <span style="display:none">[cite: 22]</span>.</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-num">3</div>
           <div>
             <div class="step-name">Автоматический расчет</div>
-            <div class="step-desc">Премиальные выплаты рассчитываются в БД Science Admin автоматически для всех подходящих публикаций <span style="display:none"></span>.</div>
+            <div class="step-desc">Премиальные выплаты рассчитываются в БД Science Admin автоматически для всех подходящих публикаций <span style="display:none">[cite: 19]</span>.</div>
           </div>
         </div>
       </div>
@@ -445,43 +453,43 @@
     
     <div>
       <h3 class="step-name">Распределение баллов (Категории)</h3>
-      <p class="step-desc" style="margin-bottom: 16px;">Балл делится на количество всех авторов с российской аффилиацией (кроме обучающихся РУДН с аффилиацией РУДН, не трудоустроенных на момент подготовки приказа на премиальную выплату). При наличии нескольких аффилиаций автора балл делится на количество российских аффилиаций <span style="display:none"></span>.</p>
+      <p class="step-desc" style="margin-bottom: 16px;">Балл делится на количество всех авторов с российской аффилиацией (кроме обучающихся РУДН с аффилиацией РУДН, не трудоустроенных на момент подготовки приказа на премиальную выплату). При наличии нескольких аффилиаций автора балл делится на количество российских аффилиаций <span style="display:none">[cite: 77, 78]</span>.</p>
       <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
         <div class="info-card compact">
           <h3>100 баллов</h3>
-          <p><strong>Категория А</strong>: 1 ур. Белого списка + TOP-1% SNIP/JIF <span style="display:none"></span></p>
+          <p><strong>Категория А</strong>: 1 ур. Белого списка + TOP-1% SNIP/JIF <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3>80 баллов</h3>
-          <p><strong>Категория B</strong>: 1 ур. Белого списка + TOP-5% SNIP/JIF <span style="display:none"></span></p>
+          <p><strong>Категория B</strong>: 1 ур. Белого списка + TOP-5% SNIP/JIF <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3>60 баллов</h3>
-          <p><strong>Категория C</strong>: 1 ур. Белого списка + TOP-10% SNIP/JIF <span style="display:none"></span></p>
+          <p><strong>Категория C</strong>: 1 ур. Белого списка + TOP-10% SNIP/JIF <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3 style="color: var(--text);">50 баллов</h3>
-          <p><strong>Категория D</strong>: TOP-10% SNIP/JIF (не входящие в А-С) <span style="display:none"></span></p>
+          <p><strong>Категория D</strong>: TOP-10% SNIP/JIF (не входящие в А-С) <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3 style="color: var(--text);">40 баллов</h3>
-          <p><strong>Категория E</strong>: 1 ур. Белого списка + Q1 SNIP/JIF <span style="display:none"></span></p>
+          <p><strong>Категория E</strong>: 1 ур. Белого списка + Q1 SNIP/JIF <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3 style="color: var(--text);">30 баллов</h3>
-          <p><strong>Категория F</strong>: Q1 SNIP/JIF (не входящие в Е) <span style="display:none"></span></p>
+          <p><strong>Категория F</strong>: Q1 SNIP/JIF (не входящие в Е) <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3 style="color: var(--mid);">20 баллов</h3>
-          <p><strong>Категория G</strong>: 1 ур. Белого списка + Q2 SNIP/JIF <span style="display:none"></span></p>
+          <p><strong>Категория G</strong>: 1 ур. Белого списка + Q2 SNIP/JIF <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3 style="color: var(--mid);">10 баллов</h3>
-          <p><strong>Категория H</strong>: Q2 SNIP/JIF (не входящие в G) <span style="display:none"></span></p>
+          <p><strong>Категория H</strong>: Q2 SNIP/JIF (не входящие в G) <span style="display:none">[cite: 70]</span></p>
         </div>
         <div class="info-card compact">
           <h3 style="color: var(--mid);">5 баллов</h3>
-          <p><strong>Категория I</strong>: 1 ур. Белого списка + RSCI <span style="display:none"></span></p>
+          <p><strong>Категория I</strong>: 1 ур. Белого списка + RSCI <span style="display:none">[cite: 70]</span></p>
         </div>
       </div>
     </div>
@@ -494,17 +502,17 @@
   <div class="memo-wrapper reveal">
     <div class="memo-header">
       <h2 class="info-title">Поощрение за <span>цитирования</span></h2>
-      <p>Единовременные выплаты устанавливаются за внешние (российские/зарубежные) цитирования научных статей работников РУДН в БД Scopus и WoS CC <span style="display:none"></span>.</p>
-      <p>К учету принимаются цитирования за текущий и три предыдущих года на статьи трех предыдущих календарных лет <span style="display:none"></span>.</p>
+      <p>Единовременные выплаты устанавливаются за внешние (российские/зарубежные) цитирования научных статей работников РУДН в БД Scopus и WoS CC <span style="display:none">[cite: 145]</span>.</p>
+      <p>К учету принимаются цитирования за текущий и три предыдущих года на статьи трех предыдущих календарных лет <span style="display:none">[cite: 146]</span>.</p>
       
       <div class="formula-box">
         <div class="formula-text">
-          Размер выплаты = Количество цитат / <span>CPP-2030</span> предметной области<sup style="font-size: 0.6em;">1</sup> × коэффициент монодисциплинарности × коэффициент категории × стоимость балла <span style="display:none"></span>
+          Размер выплаты = Количество цитат / <span>CPP-2030</span> предметной области<sup style="font-size: 0.6em;">1</sup> × коэффициент монодисциплинарности × коэффициент категории × стоимость балла <span style="display:none">[cite: 157]</span>
         </div>
         <div class="formula-legend">
           <div><b>Где:</b></div>
-          <div>коэффициент монодисциплинарности = 1,4 <span style="display:none"></span></div>
-          <div>коэффициент категории: I категория = 1; II категория = 2; III категория = 3 <span style="display:none"></span></div>
+          <div>коэффициент монодисциплинарности = 1,4 <span style="display:none">[cite: 159]</span></div>
+          <div>коэффициент категории: I категория = 1; II категория = 2; III категория = 3 <span style="display:none">[cite: 161, 162, 163]</span></div>
         </div>
       </div>
     </div>
@@ -514,15 +522,15 @@
         <div class="info-card" style="border-left: 4px solid var(--red);">
           <h3 style="color: var(--red);">Ограничения и исключения</h3>
           <ul>
-            <li>Выплаты не назначаются за самоцитирование авторами своих статей <span style="display:none"></span>.</li>
-            <li>Исключается перекрестное цитирование статьи авторами РУДН <span style="display:none"></span>.</li>
-            <li>Не учитываются цитирования, превышающие порог в 20% цитат из одного источника (независимо от года или номера издания) от общего количества внешних цитирований <span style="display:none"></span>.</li>
+            <li>Выплаты не назначаются за самоцитирование авторами своих статей <span style="display:none">[cite: 170]</span>.</li>
+            <li>Исключается перекрестное цитирование статьи авторами РУДН <span style="display:none">[cite: 170]</span>.</li>
+            <li>Не учитываются цитирования, превышающие порог в 20% цитат из одного источника (независимо от года или номера издания) от общего количества внешних цитирований <span style="display:none">[cite: 171, 172]</span>.</li>
           </ul>
         </div>
         <div class="info-card">
           <h3>Порядок проверки</h3>
-          <p>Статья в обязательном порядке должна быть отправлена на верификацию в базу ScienceAdmin и получить статус «Верифицирована / Подтверждена» <span style="display:none"></span>.</p>
-          <p style="margin-top: 10px;">Выплата за каждое цитирование статьи в соавторстве распределяется в равных долях между авторами с аффилиацией РУДН <span style="display:none"></span>.</p>
+          <p>Статья в обязательном порядке должна быть отправлена на верификацию в базу ScienceAdmin и получить статус «Верифицирована / Подтверждена» <span style="display:none">[cite: 174]</span>.</p>
+          <p style="margin-top: 10px;">Выплата за каждое цитирование статьи в соавторстве распределяется в равных долях между авторами с аффилиацией РУДН <span style="display:none">[cite: 168]</span>.</p>
         </div>
       </div>
     </div>
@@ -535,15 +543,15 @@
   <div class="memo-wrapper reveal">
     <div class="memo-header">
       <h2 class="info-title">Публикация в <span>открытом доступе</span></h2>
-      <p>Цель — поддержка и возмещение расходов на размещение статей в режиме Open Access в высокорейтинговых журналах Q1 (SNIP/SJR/JIF) в базах WoS/Scopus <span style="display:none"></span>.</p>
+      <p>Цель — поддержка и возмещение расходов на размещение статей в режиме Open Access в высокорейтинговых журналах Q1 (SNIP/SJR/JIF) в базах WoS/Scopus <span style="display:none">[cite: 226, 235]</span>.</p>
       
       <div class="info-card" style="margin-top: 24px; border-color: var(--accent); background: #f8fbff;">
         <h3>Базовые условия поддержки:</h3>
         <ul>
-          <li>Типы публикаций: Статья (Article) и Обзорная статья (Review) на английском языке <span style="display:none"></span>.</li>
-          <li>Строгая аффилиация: обязательно указание <b>RUDN University</b> <span style="display:none"></span>.</li>
-          <li>Выплата 100% возможна, если доля авторов РУДН ≥ 50%, либо если все соавторы имеют только аффилиацию РУДН или зарубежные аффилиации (без других вузов РФ) <span style="display:none"></span>.</li>
-          <li>Расчет суммы производится с использованием фракционного счёта <span style="display:none"></span>.</li>
+          <li>Типы публикаций: Статья (Article) и Обзорная статья (Review) на английском языке <span style="display:none">[cite: 235]</span>.</li>
+          <li>Строгая аффилиация: обязательно указание <b>RUDN University</b> <span style="display:none">[cite: 240]</span>.</li>
+          <li>Выплата 100% возможна, если доля авторов РУДН ≥ 50%, либо если все соавторы имеют только аффилиацию РУДН или зарубежные аффилиации (без других вузов РФ) <span style="display:none">[cite: 245, 246, 248, 249]</span>.</li>
+          <li>Расчет суммы производится с использованием фракционного счёта <span style="display:none">[cite: 241]</span>.</li>
         </ul>
       </div>
     </div>
@@ -557,13 +565,13 @@
           <div>
             <div class="step-name">Аванс (Выдача под отчет)</div>
             <div class="step-desc">
-              Применяется до публикации. Максимальная сумма аванса — до 500 000 руб <span style="display:none"></span>.
+              Применяется до публикации. Максимальная сумма аванса — до 500 000 руб <span style="display:none">[cite: 260, 262]</span>.
               <ul style="padding-left: 16px; margin-top: 10px;">
-                <li><b>Инициация:</b> Служебная записка в СЭД с визой научного управления (НУ) <span style="display:none"></span>.</li>
-                <li><b>Документы:</b> Счет от издателя (плательщик — RUDN University), построчный перевод счета, страница рукописи с указанием аффилиаций <span style="display:none"></span>.</li>
-                <li><b>Проверка:</b> НУ оценивает журнал, рассчитывает долю вклада и сумму в рублях по курсу ЦБ РФ <span style="display:none"></span>.</li>
-                <li><b>Оформление:</b> Закупка малого объема и перечисление средств автору <span style="display:none"></span>.</li>
-                <li><b>Отчетность после публикации:</b> Выписка об оплате, подтверждение платежа, копия опубликованной статьи <span style="display:none"></span>.</li>
+                <li><b>Инициация:</b> Служебная записка в СЭД с визой научного управления (НУ) <span style="display:none">[cite: 265]</span>.</li>
+                <li><b>Документы:</b> Счет от издателя (плательщик — RUDN University), построчный перевод счета, страница рукописи с указанием аффилиаций <span style="display:none">[cite: 265]</span>.</li>
+                <li><b>Проверка:</b> НУ оценивает журнал, рассчитывает долю вклада и сумму в рублях по курсу ЦБ РФ <span style="display:none">[cite: 265, 267]</span>.</li>
+                <li><b>Оформление:</b> Закупка малого объема и перечисление средств автору <span style="display:none">[cite: 267]</span>.</li>
+                <li><b>Отчетность после публикации:</b> Выписка об оплате, подтверждение платежа, копия опубликованной статьи <span style="display:none">[cite: 267]</span>.</li>
               </ul>
             </div>
           </div>
@@ -574,12 +582,12 @@
           <div>
             <div class="step-name">Возмещение расходов</div>
             <div class="step-desc">
-              Применяется при свершившейся оплате за счет автора <span style="display:none"></span>.
+              Применяется при свершившейся оплате за счет автора <span style="display:none">[cite: 269]</span>.
               <ul style="padding-left: 16px; margin-top: 10px;">
-                <li><b>Инициация:</b> Служебная записка в СЭД на возмещение <span style="display:none"></span>.</li>
-                <li><b>Документы:</b> Счет от издателя (плательщик — автор), перевод счета, заверенная банком выписка, подтверждение платежа от издательства, ссылка/копия опубликованной статьи <span style="display:none"></span>.</li>
-                <li><b>Проверка:</b> НУ оценивает соответствие требованиям, рассчитывает сумму <span style="display:none"></span>.</li>
-                <li><b>Возмещение:</b> Перечисление денежных средств заявителю финансовым департаментом <span style="display:none"></span>.</li>
+                <li><b>Инициация:</b> Служебная записка в СЭД на возмещение <span style="display:none">[cite: 274]</span>.</li>
+                <li><b>Документы:</b> Счет от издателя (плательщик — автор), перевод счета, заверенная банком выписка, подтверждение платежа от издательства, ссылка/копия опубликованной статьи <span style="display:none">[cite: 274]</span>.</li>
+                <li><b>Проверка:</b> НУ оценивает соответствие требованиям, рассчитывает сумму <span style="display:none">[cite: 274]</span>.</li>
+                <li><b>Возмещение:</b> Перечисление денежных средств заявителю финансовым департаментом <span style="display:none">[cite: 274]</span>.</li>
               </ul>
             </div>
           </div>
